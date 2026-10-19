@@ -1,5 +1,7 @@
 import importlib.util
+import os
 from pathlib import Path
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -13,6 +15,33 @@ spec.loader.exec_module(bundle)
 
 
 class ReleaseCompatibilityTests(unittest.TestCase):
+    def test_ffmpeg_download_creates_cache_from_empty_checkout(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            script = root / 'scripts/release/build-ffmpeg.sh'
+            script.parent.mkdir(parents=True)
+            shutil.copyfile(Path(__file__).resolve().parents[1] / 'scripts/release/build-ffmpeg.sh', script)
+            commands = root / 'commands'
+            commands.mkdir()
+            curl = commands / 'curl'
+            curl.write_text('''#!/bin/bash
+while [[ $# -gt 0 ]]; do
+  if [[ "$1" == --output ]]; then
+    shift
+    printf 'download started' > "$1" || exit 99
+    exit 73
+  fi
+  shift
+done
+exit 98
+''')
+            curl.chmod(0o755)
+            result = subprocess.run(['bash', str(script)], capture_output=True, text=True,
+                                    env={**os.environ, 'PATH': str(commands) + os.pathsep + os.environ['PATH']})
+            # Stop at the simulated download; no network, extraction or compile.
+            self.assertEqual(result.returncode, 73, result.stderr)
+            self.assertEqual((root / '.cache/ffmpeg-8.1.2.tar.xz.part').read_text(), 'download started')
+
     def audit_fixture(self, build, dependency='/usr/lib/libSystem.B.dylib'):
         with tempfile.TemporaryDirectory() as temporary:
             folder = Path(temporary)
