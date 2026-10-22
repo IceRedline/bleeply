@@ -40,7 +40,7 @@ processing run locally; your recordings stay on your Mac.
 
 **Requires an Apple Silicon Mac running macOS 15.0 or later.**
 
-1. [Download bleeply 0.1.9 (build 20)](https://github.com/IceRedline/bleeply/releases/download/v0.1.9/bleeply-0.1.9-arm64.dmg).
+1. [Download latest release](https://github.com/tabenskii/bleeply/releases) by selecting the `.dmg` file under **Assets**.
 2. Open the DMG and drag **bleeply** to **Applications**.
 3. Open **bleeply** from Applications and choose a video or audio file.
 4. If prompted, allow the selected speech model to download. Once it is downloaded, recognition works offline.
@@ -50,7 +50,7 @@ the recognition engines are included. Model downloads can be several GB;
 Settings shows an estimate for the selected model. Recordings are processed on
 your Mac. An Intel installer is not available.
 
-[Release notes and checksums](https://github.com/IceRedline/bleeply/releases/tag/v0.1.9)
+[Release notes and checksums](https://github.com/tabenskii/bleeply/releases)
 · [macOS user guide](macOS/README.md)
 
 ### Updating an existing installation
