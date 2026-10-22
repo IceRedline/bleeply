@@ -9,6 +9,11 @@ processing run locally; your recordings stay on your Mac.
 
 [Privacy Policy](docs/privacy-policy.md) · [Support](docs/support.md) · [Open Source Licenses](docs/third-party.md)
 
+<img width="2400" height="1738" alt="Снимок экрана — 2026-10-21 в 21 10 24-Photoroom" src="https://github.com/user-attachments/assets/ca21a33f-81c3-4fbf-9f54-51274242f973" />
+
+<img width="2400" height="1738" alt="Снимок экрана — 2026-10-21 в 21 10 09-Photoroom" src="https://github.com/user-attachments/assets/a0bdfc40-c0dc-47dd-9117-ae27d57835ec" />
+
+
 **Contents:** 
 
 [Download](#download-for-macos)
